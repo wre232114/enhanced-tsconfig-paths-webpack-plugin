@@ -8,18 +8,18 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=14",
+    "pnpm": "6.10.3"
   },
   "scripts": {
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test",
     "lint": "tsdx lint",
-    "prepare": "tsdx build",
+    "prepublishOnly": "tsdx build",
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -32,6 +32,11 @@
     "trailingComma": "es5"
   },
   "name": "enhanced-tsconfig-paths-webpack-plugin",
+  "description": "Load modules according to the closest tsconfig.json's paths in webpack, working greatly in Monorepo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wre232114/enhanced-tsconfig-paths-webpack-plugin"
+  },
   "author": "wre232114",
   "module": "dist/enhanced-tsconfig-paths-webpack-plugin.esm.js",
   "size-limit": [
@@ -46,7 +51,9 @@
   ],
   "devDependencies": {
     "@size-limit/preset-small-lib": "^5.0.2",
+    "@types/enhanced-resolve": "^3.0.7",
     "@typescript-eslint/parser": "^4.28.5",
+    "enhanced-resolve": "^5.8.2",
     "eslint": "^7.31.0",
     "husky": "^7.0.1",
     "prettier": "^2.3.2",
@@ -54,7 +61,8 @@
     "size-limit": "^5.0.2",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "webpack": "^5.50.0"
   },
   "dependencies": {
     "tsconfig-paths": "^3.10.1"

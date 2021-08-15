@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@common": ["common"]
+    } 
+  },
+  "references": [
+    {
+      "path": "../libs"
+    } 
+  ]
+}

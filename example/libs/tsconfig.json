@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "baseUrl": "src",
+    "composite": true,
+    "paths": {
+      "@utils": ["utils"]
+    }
+  }
+}
