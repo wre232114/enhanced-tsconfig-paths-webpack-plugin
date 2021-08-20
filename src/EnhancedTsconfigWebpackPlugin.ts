@@ -22,7 +22,11 @@ export class EnhancedTsconfigWebpackPlugin {
       }
 
       //@ts-ignore context is exsited, but the internal type do not provide it, so we ignore it for now
-      const issuer = request.context.issuer;
+      const issuer = request.context?.issuer;
+      if (!issuer) {
+        return callback();
+      }
+
       const tsconfig = this._loader.load(path.dirname(issuer));
       console.log(issuer, tsconfig?.absoluteBaseUrl);
 
