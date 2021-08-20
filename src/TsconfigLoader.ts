@@ -11,7 +11,7 @@ export class TsconfigLoader {
   /**
    * cache visited dir and tsconfig infos
    */
-   private readonly _visitedDirMap = new Map<string, boolean>();
+  private readonly _visitedDirMap = new Map<string, boolean>();
 
   /**
    * load closest tsconfig.json
@@ -48,7 +48,7 @@ export class TsconfigLoader {
       this._visitedDirMap.set(tempDir, true);
       return tempDir;
     }
-    
+
     this._visitedDirMap.set(tempDir, false);
     return this._getCloestTsconfigDirPath(path.dirname(tempDir));
   }
