@@ -1,4 +1,5 @@
-![status](https://github.com/wre232114/enhanced-tsconfig-paths-webpack-plugin/actions/workflows/main.yml/badge.svg?branch=master)
+![status](https://github.com/wre232114/enhanced-tsconfig-paths-webpack-plugin/actions/workflows/main.yml/badge.svg?branch=main)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebook/react/blob/main/LICENSE)
 
 # enhanced-tsconfig-paths-webpack-plugin
 Load modules according to the closest tsconfig.json's paths in webpack, working greatly in Monorepo.
