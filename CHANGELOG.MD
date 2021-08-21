@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.1
+* fix: show CI status
+
 ## 0.2.0
 * feat: ignore node_modules by default
 * feat: map ts and tsx by default
