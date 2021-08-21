@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
+        node: ['12.x', '14.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
@@ -19,14 +19,22 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
 
-      - name: Install deps and build (with cache)
-        uses: bahmutov/npm-install@v1
+      - name: Install deps
+        run: |
+          npm install -g pnpm@6.10.3
+          pnpm install --frozen-lockfile
+          cd example && pnpm install
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Test
-        run: yarn test --ci --coverage --maxWorkers=2
+        run: pnpm test
 
       - name: Build
-        run: yarn build
+        run: pnpm build
+
+      - name: E2E test
+        run: |
+          cd example/apps && pnpm build
+          node dist/index.bundle.js

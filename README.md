@@ -1,7 +1,9 @@
+![status](https://github.com/wre232114/enhanced-tsconfig-paths-webpack-plugin/actions/workflows/main.yml/badge.svg?branch=master)
+
 # enhanced-tsconfig-paths-webpack-plugin
 Load modules according to the closest tsconfig.json's paths in webpack, working greatly in Monorepo.
 
-It when resolving modules for a file in webpack, it will used the closest tsconfig.json' paths of the file, for example:
+When resolving modules in webpack, it will use the closest tsconfig.json' paths of the file, for example:
 ```txt
 .
 ├── apps
@@ -26,8 +28,6 @@ It when resolving modules for a file in webpack, it will used the closest tsconf
 ```
 
 In the example above, app import lib using `@bright/shared`, when we start app using webpack, this plugin will load each file's closest tsconfig's paths(in apps it will load apps/tsconfig.json, in libs, it will load libs/tsconfig.json), and redirect it to the real path.
-
-> Warning: If you are using ts-loader to transpile typescript, please set `transpileOnly: true` to skip typechecking, or an type error may be throwed. 
 
 ## Quick Start
 ### Install
@@ -76,6 +76,44 @@ export default {
   }
 } as Configuration;
 ```
+
+> Warning1: If you are using ts-loader to transpile typescript, please set `transpileOnly: true` to skip type-checking, or an type error may be throwed. 
+>
+> Warning2: node_modules is ignored by default, the `ignoreNodeModules` option can configure this behavior
+
+## Options
+### ignoreNodeModules
+> since 0.2.0
+>
+> default: true
+
+ignore mapping files under node_modules. Example:
+```ts
+new EnhancedTsconfigWebpackPlugin({
+  ignoreNodeModules: false
+}),
+```
+
+### tsconfigPaths
+> since 0.2.0
+>
+> default: {
+>   extensions: [...Object.key(require.extensions), '.tx', '.tsx']
+>   matchAll: true
+>   mainFields: ['main']
+> }
+
+options passed to [tsconfig-paths](https://github.com/dividab/tsconfig-paths).
+```ts
+new EnhancedTsconfigWebpackPlugin({
+  tsconfigPaths: {
+    extensions: ['.ts'], // only map .ts file
+    mainFields: ['main'], // main package.json's main field
+    matchAll: true // add a extra * before matching, this is how typescript works
+  }
+})
+```
+
 
 ## Contribution
 
