@@ -15,10 +15,10 @@ export class TsconfigLoader {
 
   /**
    * load closest tsconfig.json
-   * @param p the dir path to load closest tsconfig.json
+   * @param cwd the dir path to load closest tsconfig.json
    */
   load(cwd: string): ConfigLoaderSuccessResult | null {
-    const tsconfigPath = this._getCloestTsconfigDirPath(cwd);
+    const tsconfigPath = this._getClosestTsconfigDirPath(cwd);
     const tsconfig = loadConfig(tsconfigPath);
 
     if (tsconfig.resultType === 'success') {
@@ -28,7 +28,7 @@ export class TsconfigLoader {
     }
   }
 
-  private _getCloestTsconfigDirPath(cwd: string): string {
+  private _getClosestTsconfigDirPath(cwd: string): string {
     let tempDir = cwd;
 
     /**
@@ -50,6 +50,6 @@ export class TsconfigLoader {
     }
 
     this._visitedDirMap.set(tempDir, false);
-    return this._getCloestTsconfigDirPath(path.dirname(tempDir));
+    return this._getClosestTsconfigDirPath(path.dirname(tempDir));
   }
 }
