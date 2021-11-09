@@ -1,5 +1,5 @@
 {
-  "version": "0.2.1",
+  "version": "0.2.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -7,14 +7,12 @@
     "dist",
     "src"
   ],
-  "engines": {
-    "pnpm": "6.10.3"
-  },
   "keywords": [
     "tsconfig",
     "paths",
     "webpack",
-    "alias"
+    "alias",
+    "monorepo"
   ],
   "scripts": {
     "start": "tsdx watch",

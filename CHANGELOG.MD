@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.2.2
+* fix: remove pnpm engines field in package.json
+
 ## 0.2.1
 * fix: show CI status
 
