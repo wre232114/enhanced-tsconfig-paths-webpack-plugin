@@ -60,17 +60,17 @@ export class EnhancedTsconfigWebpackPlugin {
           }
 
           //@ts-ignore context is exsited, but the internal type do not provide it, so we ignore it for now
-          const issuer: string | undefined = request.context?.issuer;
+          const issuerDir: string | undefined = (request.context?.issuer && path.dirname(request.context?.issuer)) || request.path;
           if (
-            !issuer ||
+            !issuerDir ||
             (this._options.ignoreNodeModules &&
-              issuer &&
-              issuer.includes('node_modules'))
+              issuerDir &&
+              issuerDir.includes('node_modules'))
           ) {
             return callback();
           }
 
-          const tsconfig = this._loader.load(path.dirname(issuer));
+          const tsconfig = this._loader.load(issuerDir);
 
           if (!tsconfig || !tsconfig.baseUrl) {
             return callback();

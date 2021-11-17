@@ -19,6 +19,11 @@ export class TsconfigLoader {
    */
   load(cwd: string): ConfigLoaderSuccessResult | null {
     const tsconfigPath = this._getClosestTsconfigDirPath(cwd);
+
+    if (!tsconfigPath) {
+      return null;
+    }
+
     const tsconfig = loadConfig(tsconfigPath);
 
     if (tsconfig.resultType === 'success') {

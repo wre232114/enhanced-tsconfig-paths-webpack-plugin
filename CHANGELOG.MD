@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3
+* fix: issuer in context might be empty, use request.path instead
+* fix: load config path might be empty, catch it
+
 ## 0.2.2
 * fix: remove pnpm engines field in package.json
 

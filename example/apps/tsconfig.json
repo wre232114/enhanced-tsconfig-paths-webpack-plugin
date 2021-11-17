@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@common": ["common"]
+      "@common": ["common"],
+      "@utils": ["utils"]
     } 
   },
   "references": [
